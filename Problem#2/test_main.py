@@ -4,7 +4,7 @@ from main import Solution
 
 def test_use_case_proper_value_first() -> None:
     list_1 = [2,4,3]
-    list_2 = [5,6,7]
+    list_2 = [5,6,4]
     output = Solution.addTwoNumbers(list_1,list_2)
     assert output == [7,0,8]
 
