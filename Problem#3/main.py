@@ -20,8 +20,3 @@ class Solution(object):
             if counter > max_counter:
                 max_counter = counter
         return max_counter
-
-
-s = "aab"
-
-print(f"{Solution.lengthOfLongestSubstring(s)}")
