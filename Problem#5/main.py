@@ -13,22 +13,17 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        res = ""
-        reslen = 0
-
-        for i in range(len(s)):
-            l, r = i ,i
-            while l >= 0 and r < len(s) and s[l] == s[r]:
-                if (r - l + 1) > reslen:
-                    res = s[l:r + 1]
-                    reslen = r - l + 1
-                l -= 1
-                r ++ 1
-            l, r = i, i + 1
-            while l >= 0 and r < len(s) and s[l] == s[r]:
-                if (r - l + 1) > reslen:
-                    res = s[l:r + 1]
-                    reslen = r - l +1
-                    l -= 1
-                    r += 1
-        return res
+        longest = '' if not s else s[0]
+        max_len = 1
+        size = len(s)
+        dp=[[False]*size for _ in range(size)]
+        for start in range(size-1,-1,-1):
+            dp[start][start]=True
+            for end in range(start+1,size):
+                if s[start]==s[end]:
+                    if end - start == 1 or dp[start+1][end-1]:
+                        dp[start][end] = True
+                        if max_len < end - start + 1:
+                            max_len = end - start + 1
+                            longest = s[start: end+ 1]
+        return longest
